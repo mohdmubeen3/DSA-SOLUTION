@@ -4,7 +4,7 @@ class Solution {
         ArrayList<List<Integer>> ans  = new ArrayList<>();
         Arrays.sort(nums);
 
-        for(int i = 0; i<nums.length; i++){
+        for(int i = 0; i<nums.length - 2; i++){
             int l = i + 1;
             int r = nums.length - 1;
 
@@ -18,7 +18,7 @@ class Solution {
                     while(l < r && nums[r] == nums[r-1]) r--;
 
                     r--;
-                    l--;
+                    l++;
                 } else if(sum < 0){
                     l++;
                 } else {
