@@ -17,10 +17,10 @@ class Solution {
                 }
             }
             if((people[l] + people[r]) > limit){
-                 if(people[r] <= limit){
+                
                     cnt++;
                     r--;
-                 }
+                 
             } else {
                 cnt++;
                 l++;
