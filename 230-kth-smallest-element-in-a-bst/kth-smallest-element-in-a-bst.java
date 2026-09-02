@@ -18,23 +18,40 @@ import java.util.*;
 class Solution {
 
     ArrayList<Integer> list  = new ArrayList<>();
+    int count = 0;
+    int res = 0;
 
-    public List<Integer> xyz(TreeNode root){
-        if(root == null) return list;
+    public void xyz(TreeNode root, int k){
+        if(root == null) return ;
+
+        xyz(root.left, k);
+        count++;
+        
+
+        if(count == k){
+
+            res = root.val;
+          
+           
+            
+
+
+        }
+
+         xyz(root.right, k);
 
 
 
-        xyz(root.left);
-        list.add(root.val);
-        xyz(root.right);
+        
 
-        return list;
+        
 
     }
     public int kthSmallest(TreeNode root, int k) {
 
-        xyz(root);
-        return list.get(k-1);
+       xyz(root, k);
+       return res;
+      
 
         
     }
