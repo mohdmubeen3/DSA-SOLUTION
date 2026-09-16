@@ -15,24 +15,17 @@
  */
 class Solution {
 
-    public boolean xyz(TreeNode root, int sum){
+    public boolean xyz(TreeNode root, int target){
+        if(root == null) return false;
 
-        if(root == null){
-            return false;
+        if(root.val == target && root.left == null && root.right == null){
+            return true;
         }
 
-        if(root.left == null && root.right == null){{
-            if(root.val == sum){
-                 return true;
+        if(root.val != target && root.left == null && root.right == null) return false;
 
-            } else {
-                return false;
-            }
-        }
-           
-        }
+        return xyz(root.left, target - root.val) || xyz(root.right, target - root.val);
 
-        return xyz(root.left, sum - root.val ) || xyz(root.right, sum - root.val);
     }
     public boolean hasPathSum(TreeNode root, int targetSum) {
 
