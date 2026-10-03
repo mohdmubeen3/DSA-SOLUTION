@@ -1,32 +1,33 @@
 import java.util.*;
 class Solution {
     public int[] intersection(int[] nums1, int[] nums2) {
-        int n = nums1.length;
-        int m = nums2.length;
-        
+       int freq [] = new int[1001];
+       int n = nums1.length;
+       int m = nums2.length;
+       for(int i = 0; i<n; i++){
 
-        HashSet<Integer> set = new HashSet<>();
-        HashSet<Integer> set2 = new HashSet<>();
+        freq[nums1[i]] = 1;
+       }
 
-        for(int num: nums1){
-            set.add(num);
-        }
-        int j = 0;
-        for(int i = 0; i<m; i++){
-            if(set.contains(nums2[i])){
+       int cnt = 0;
 
-                set2.add(nums2[i]);
-
-            }
+       for(int i = 0; i<m; i++){
+        if(freq[nums2[i]] == 1){
+            freq[nums2[i]] =2;
+            cnt++;
         }
 
-        int s = set2.size();
-        int res []= new int[s];
-
-        for(int ans1:set2){
-            res[j++] = ans1;
+       }
+       int res [] = new int[cnt];
+       int i = 0;
+       for(int j = 0; j<1001; j++){
+        if(freq[j] == 2){
+            res[i++] = j;
         }
+       }
 
-        return res;
+       return res;
+
+
     }
 }
