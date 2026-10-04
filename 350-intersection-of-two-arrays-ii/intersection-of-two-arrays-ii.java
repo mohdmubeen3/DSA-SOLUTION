@@ -2,29 +2,30 @@ import java.util.*;
 class Solution {
     public int[] intersect(int[] nums1, int[] nums2) {
 
-        ArrayList<Integer> list = new ArrayList<>();
-        int freq[] = new int[1001];
+        int n = nums1.length;
+        int m = nums2.length;
 
-        for(int i = 0; i<nums1.length; i++){
-            freq[nums1[i]]++;
-        }
+        Arrays.sort(nums1);
+        Arrays.sort(nums2);
 
-        for(int i =0; i<nums2.length; i++){
-            if(freq[nums2[i]] > 0){
-                list.add(nums2[i]);
+        int ans [] = new int[n];
+        int i = 0; 
+        int j = 0; 
+        int k = 0; 
 
-                freq[nums2[i]]--;
+        while(i < n && j <m){
+            if(nums1[i] == nums2[j]){
+                ans[k++] = nums1[i];
+                i++;
+                j++;
+            } else if(nums1[i] > nums2[j]){
+                j++;
+            } else {
+                i++;
             }
         }
 
-        int n = list.size();
-        int ans[] = new int[n];
-
-        for(int i = 0; i<n; i++){
-            ans[i] = list.get(i);
-        }
-
-        return ans;
+        return Arrays.copyOf(ans, k);
         
         
     }
