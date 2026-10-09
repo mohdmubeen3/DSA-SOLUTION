@@ -1,14 +1,18 @@
 class Solution {
     public int sumOddLengthSubarrays(int[] arr) {
+        int ans = 0;
+
+        double freq = 0;
+
         int n = arr.length;
-        int res = 0;
-        for(int i = 0; i<n; i++){
-            double fre = Math.ceil(((i + 1) * (n - i))/2.0);
 
-            res += (int)(fre * arr[i]);
+        for(int i = 0; i<arr.length; i++){
+            freq = Math.ceil(((i + 1) * (n  - i))/2.0);
 
+            ans += (int) (freq * arr[i]);
         }
 
-        return res;
+
+        return ans;
     }
 }
