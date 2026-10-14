@@ -14,20 +14,20 @@
  * }
  */
 class Solution {
+    public boolean xyz(TreeNode a, TreeNode b){
+        if(b == null && a == null) return true;
+        if(a == null || b==null) return false;
 
-    public boolean symmteric(TreeNode a, TreeNode b){
-        if(a == null && b == null ) return true;
-        if(a == null || b == null) return false;
         if(a.val != b.val) return false;
 
-        return symmteric(a.left, b.right) && symmteric(a.right, b.left);
+        return xyz(a.left, b.right) && xyz(a.right, b.left);
         
     }
     public boolean isSymmetric(TreeNode root) {
 
-        if(root == null) return false;
+        if(root == null) return true;
 
-        return symmteric(root.left, root.right);
+       return xyz(root.left, root.right);
         
     }
 }
