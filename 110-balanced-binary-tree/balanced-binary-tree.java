@@ -14,21 +14,31 @@
  * }
  */
 class Solution {
+
     public int xyz(TreeNode root){
-
         if(root == null) return 0;
-        int leftH = xyz(root.left);
-        int rightH = xyz(root.right);
 
-        if(leftH == -1 || rightH == -1) return -1;
+       
 
-        if(Math.abs(leftH - rightH) > 1) return -1;
+        int left =  xyz(root.left);
+
+         if(left == -1) return -1;
+
+    
+
         
-        return 1 + Math.max(leftH, rightH);
+        int right =  xyz(root.right);
+            if(right == -1) return -1;
+
+        
+
+        if(Math.abs(left - right ) > 1)return -1;
+
+        return   1 + Math.max(left, right);
+
+
     }
     public boolean isBalanced(TreeNode root) {
-
-        if(root == null) return true;
 
         if(xyz(root) == -1) return false;
         else return true;
