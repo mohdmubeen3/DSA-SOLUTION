@@ -2,21 +2,21 @@ import java.util.*;
 class Solution {
     public long pickGifts(int[] gifts, int k) {
 
-        int n = gifts.length;
-        
+       PriorityQueue<Integer> minHeap = new PriorityQueue<>(Collections.reverseOrder());
+
+        for(int gift : gifts){
+            minHeap.offer(gift);
+        }
 
         for(int i = 0; i<k; i++){
-            Arrays.sort(gifts);
-
-            gifts[n-1] = (int) Math.sqrt(gifts[n-1]);
+            int insert = (int) Math.sqrt(minHeap.poll());
+            minHeap.offer(insert);
         }
 
         long total = 0;
-
-        for(int gift : gifts){
-            total += gift;
+        while(!minHeap.isEmpty()){
+           total += minHeap.poll();
         }
-
         return total;
     }
 }
