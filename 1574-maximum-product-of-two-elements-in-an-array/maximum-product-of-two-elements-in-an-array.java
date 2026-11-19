@@ -1,15 +1,17 @@
 class Solution {
     public int maxProduct(int[] nums) {
-        int max1 = 0;
-        int max2 = 0;
-        for (int num : nums) {
-            if (num > max1) {
-                max2 = max1;
-                max1 = num;
+        int m1 = Integer.MIN_VALUE;
+        int m2 = Integer.MIN_VALUE;
+
+        for(int num : nums){
+            if(num > m1){
+                m2 = m1;
+                m1 = num;
+            } else if(num > m2 && num <= m1){
+                m2 = num;
             }
-            else if (num > max2)
-                max2 = num;
         }
-        return (max1 - 1) * (max2 - 1);
+
+        return (m1 - 1) * (m2 - 1);
     }
 }
